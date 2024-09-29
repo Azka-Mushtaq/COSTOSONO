@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import img from "../Images/ProductImages/img.jpg";
 import ProductsInCart from "./ProductsInCart";
 import {Link} from 'react-router-dom'
 
+import { ModalContext } from '../context/ModalContext'; // Import the context
+import { CartContext } from "../context/CartContext";
+
 
 const ShoppingCartModal = ({
-  isOpen,
-  toggleModal,
-  cartItems,
-  removeItemFromCart,
-  subtotal
 }) => {
+
+  const {isOpen,toggleModal}=useContext(ModalContext);
+  const {subtotal}=useContext(CartContext);
 
   const handleCheckoutClick=()=>
   {
     toggleModal();
-    
   }
  
   return (
@@ -43,10 +43,7 @@ const ShoppingCartModal = ({
 
             {/* Items in Cart */}
             <div className="">
-              {/* Item 1 */}
-              <ProductsInCart 
-              cartItems={cartItems} 
-              removeItemFromCart={removeItemFromCart} />
+              <ProductsInCart/>
             </div>
 
             <div className="mt-auto">

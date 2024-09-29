@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const OrderSummary = ({ cartItems, subtotal }) => {
+const OrderSummary = () => {
+  
+  const {cartItems,subtotal} =useContext(CartContext);
+
   return (
+
     <div className="w-full font-sans">
       <div>
         <div className="flex justify-between py-2">

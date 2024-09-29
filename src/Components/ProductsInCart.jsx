@@ -1,9 +1,13 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import img from "../Images/ProductImages/img.jpg";
+import { CartContext } from "../context/CartContext";
+import { useContext } from "react";
 
-const ProductsInCart = ({ cartItems ,
-    removeItemFromCart
-}) => {
+
+const ProductsInCart = () => {
+
+  const {cartItems, removeItemFromCart} =useContext(CartContext);
+
   return (
     <>
       {/* Items in Cart */}
@@ -21,9 +25,9 @@ const ProductsInCart = ({ cartItems ,
                     className="rounded-lg w-16 h-16"
                   />
                   <div>
-                    <h3 className="font-semibold">{cartItem.description}</h3>
+                    <h3 className="font-semibold">{cartItem.name}</h3>
                     <p>
-                      1 x{" "}
+                      {cartItem.quantity} x{" "}
                       <span className="text-yellow-400 font-semibold">
                         Rs. {cartItem.price}
                       </span>

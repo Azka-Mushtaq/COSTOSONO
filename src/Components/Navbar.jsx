@@ -1,10 +1,13 @@
 import {Link } from "react-router-dom";
 
-import React from "react";
+import React, {useContext} from "react";
+import { ModalContext } from '../context/ModalContext'; // Import the context
 
 
 
-const Navbar = (props) => {
+const Navbar = () => {
+  const {toggleModal } = useContext(ModalContext); // Use the context
+
   return (
     <>
       <nav className="bg-white border-b border-gray-200">
@@ -56,7 +59,7 @@ const Navbar = (props) => {
             <Link to="/wishlist" className="text-gray-600 hover:text-black ">
               <i className="far fa-heart"></i> {/* Heart Icon */}
             </Link>
-            <a onClick={props.toggleModal} className="text-gray-600 hover:text-black">
+            <a onClick={toggleModal} className="text-gray-600 hover:text-black">
               <i className="fas fa-shopping-cart"></i> {/* Cart Icon */}
             </a>
           </div>

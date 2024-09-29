@@ -1,0 +1,83 @@
+{
+  "products": [
+    {
+      "id": "4eab",
+      "name": "Dell Laptop",
+      "description": "This is brand new dell laptop",
+      "price": "34200",
+      "date": "2024-09-29T05:41:30.344Z",
+      "quantity": "9",
+      "isNewProduct": "true",
+      "colors": [
+        "blue",
+        "black"
+      ],
+      "image": {
+        "path": "img (3).jpg"
+      }
+    },
+    {
+      "id": "4405",
+      "name": "Mobile Phone",
+      "description": "New Mobile phone with ....",
+      "price": "45000",
+      "date": "2024-09-29T05:44:21.921Z",
+      "quantity": "12",
+      "isNewProduct": "true",
+      "colors": [
+        "red",
+        "blue"
+      ],
+      "image": {
+        "path": "img (1).jpg"
+      }
+    },
+    {
+      "id": "0d1b",
+      "name": "Charger",
+      "description": "sdfjlsdkfyhd fkdjflsdkhf",
+      "price": "345",
+      "date": "2024-09-29T05:44:54.065Z",
+      "quantity": "10",
+      "isNewProduct": "false",
+      "colors": [
+        "yellow"
+      ],
+      "image": {
+        "path": "img (5).jpg"
+      }
+    },
+    {
+      "id": "3b71",
+      "name": "Laptop Charger",
+      "description": "jhdsuk sajdfoskdut dlfjsld",
+      "price": "34500",
+      "date": "2024-09-29T06:06:36.699Z",
+      "quantity": "342",
+      "isNewProduct": "false",
+      "colors": [
+        "red",
+        "gray",
+        "pink"
+      ],
+      "image": {
+        "path": "img (4).jpg"
+      }
+    },
+    {
+      "id": "8a1c",
+      "name": "Computer",
+      "description": "this is new computer",
+      "price": "3400",
+      "date": "2024-09-29T06:08:33.527Z",
+      "quantity": "17",
+      "isNewProduct": true,
+      "colors": [
+        "yellow"
+      ],
+      "image": {
+        "path": "img (1).jpg"
+      }
+    }
+  ]
+}

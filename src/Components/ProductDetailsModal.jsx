@@ -1,32 +1,39 @@
 import image from "../Images/ProductImages/img.jpg";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+
+//import context provider
+import { ProductModalContext } from "../context/ProductModalContext";
+import { CartContext } from "../context/CartContext";
+import { ModalContext } from "../context/ModalContext";
+import { SelectedProductContext } from "../context/SelectedProductContext";
 
 const ProductDetailsModel = ({
-  selectedProduct,
-  toggleProductModal,
-  productDetailsIsOpen,
-  addItemInCart,
-  toggleModal
 }) => {
-  const [quantity, setQuantity] = useState(0);
+
+  const {selectedProduct} = useContext(SelectedProductContext);
+  const { toggleModal } = useContext(ModalContext);
+  const { addItemInCart } = useContext(CartContext);
+  const { productDetailsIsOpen, toggleProductModal } =
+    useContext(ProductModalContext);
+
+
+  const [quantity, setQuantity] = useState(1);
   const decreaseQuantity = () => {
-    setQuantity(quantity > 0 ? quantity - 1 : 0);
+    setQuantity(quantity > 1 ? quantity - 1 : 1);
   };
   const increaseeQuantity = () => {
-    setQuantity(quantity+1);
+    setQuantity(quantity + 1);
   };
-  const handleOnClose=()=>
-  {
-    setQuantity(0)
-    toggleProductModal()
-  }
+  const handleOnClose = () => {
+    setQuantity(1);
+    toggleProductModal();
+  };
 
-  const handleCartItemInsertion=()=>
-  {
-    addItemInCart(selectedProduct)
-    toggleProductModal()
-    toggleModal()
-  }
+  const handleCartItemInsertion = () => {
+    addItemInCart(selectedProduct,quantity);
+    toggleProductModal();
+    toggleModal();
+  };
   return (
     <>
       {/* Main modal */}
@@ -46,7 +53,7 @@ const ProductDetailsModel = ({
 
                 <button
                   type="button"
-                  onClick={handleOnClose} 
+                  onClick={handleOnClose}
                   className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   <svg
@@ -123,28 +130,36 @@ const ProductDetailsModel = ({
                         Color
                       </label>
                       <div className="flex space-x-2 my-3">
-                        <div className="bg-yellow-100 p-4 rounded-full hover:cursor-pointer"></div>
-                        <div className="bg-gray-200 p-4 rounded-full"></div>
-                        <div className="bg-red-500 p-4 rounded-full"></div>
+                        {selectedProduct.colors.map((color)=>(
+                        <div key={color} className={`bg-${color}-600 p-4 rounded-full hover:cursor-pointer hover:bg-${color}-800`}></div>
+                        ))}
                       </div>
                     </div>
 
                     <div className="my-9 flex space-x-4 ">
                       {/* Quantity Selector */}
                       <div className="flex items-center justify-between border border-gray-300 rounded-lg w-1/3 px-3 py-1">
-                        <button className="text-lg text-gray-500" onClick={decreaseQuantity}>-</button>
-                        
-                        <span className="text-lg font-medium">
-                        {quantity}
-                        
-                        </span>
-                        
-                        <button className="text-lg text-gray-500" onClick={increaseeQuantity}>+</button>
+                        <button
+                          className="text-lg text-gray-500"
+                          onClick={decreaseQuantity}
+                        >
+                          -
+                        </button>
+
+                        <span className="text-lg font-medium">{quantity}</span>
+
+                        <button
+                          className="text-lg text-gray-500"
+                          onClick={increaseeQuantity}
+                        >
+                          +
+                        </button>
                       </div>
 
                       {/* Add to Cart Button */}
                       <div className="">
-                        <button onClick={handleCartItemInsertion}
+                        <button
+                          onClick={handleCartItemInsertion}
                           className="text-white px-6 py-2 rounded-lg w-full md:w-auto"
                           style={{ backgroundColor: "#b88e2f", color: "white" }}
                         >

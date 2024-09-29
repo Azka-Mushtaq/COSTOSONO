@@ -1,16 +1,19 @@
 import OrderForm from './OrderForm';
 import OrderSummary from './OrderSummary';
 import {Link} from 'react-router-dom'
+import { CartContext } from '../context/CartContext';
+import { useContext } from 'react';
 
-const Checkout = ({ cartItems,
-  subtotal
- }) => {
+const Checkout = () => {
+  const {cartItems, subtotal}=useContext(CartContext);
+
   return (
     <>
       
       <div className="container flex justify-center text-4xl font-bold mt-20 ">
       <h1>Billing details</h1>
       </div>
+
       <div className="container flex md:flex-row flex-col justify-center  mx-auto mb-10 lg:space-x-20 space-x-10">
         
         {/* Billing Details */}
@@ -19,8 +22,7 @@ const Checkout = ({ cartItems,
         </div>
         {/* Order Summary */}
         <div className="md:w-1/3 p-4 space-y-3 md:px-0">
-          <OrderSummary cartItems={cartItems} 
-          subtotal={subtotal}/>
+          {cartItems && < OrderSummary/>}
 
           <hr/>
 
